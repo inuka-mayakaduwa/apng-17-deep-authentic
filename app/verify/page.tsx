@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import {
@@ -27,6 +26,7 @@ import { Separator } from "@/components/ui/separator"
 import VerificationScan from "@/components/verification-scan"
 
 export default function VerifyPage() {
+  const fileInputRef = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<File | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string>("")
   const [step, setStep] = useState<"upload" | "verifying" | "results">("upload")
@@ -56,6 +56,7 @@ export default function VerifyPage() {
   }
 
   const startVerification = async () => {
+    if (!file) return
     setStep("verifying")
 
     // Simulate verification steps
@@ -100,7 +101,8 @@ export default function VerifyPage() {
     artworks: 37,
     sales: 24,
     bio: "Elena creates vibrant abstract works that explore the relationship between color and emotion. Her work has been featured in galleries across Europe and North America.",
-    avatar: "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/130097424/original/70d0542134a327e7247f6847303c3eddaa500f1c/draw-a-bright-cartoon-profile-pic.png",
+    avatar:
+      "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/130097424/original/70d0542134a327e7247f6847303c3eddaa500f1c/draw-a-bright-cartoon-profile-pic.png",
   }
 
   // Dummy artwork data
@@ -206,18 +208,21 @@ export default function VerifyPage() {
                           </div>
                         )}
 
+                        <Button
+                          variant={previewUrl ? "outline" : "default"}
+                          className="mt-4"
+                          onClick={() => fileInputRef.current?.click()}
+                        >
+                          {previewUrl ? "Choose Different File" : "Select File"}
+                        </Button>
                         <input
+                          ref={fileInputRef}
                           type="file"
                           accept="image/*"
                           onChange={handleFileChange}
-                          className="hidden"
+                          className="sr-only"
                           id="artwork-upload"
                         />
-                        <label htmlFor="artwork-upload">
-                          <Button variant={previewUrl ? "outline" : "default"} className="mt-4">
-                            {previewUrl ? "Choose Different File" : "Select File"}
-                          </Button>
-                        </label>
                       </div>
 
                       <div className="flex justify-center">
@@ -591,7 +596,7 @@ export default function VerifyPage() {
                                 {[1, 2, 3].map((i) => (
                                   <div key={i} className="relative aspect-square">
                                     <img
-                                      src={`https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bf22a90b-bd9b-4f93-ba8e-fc29195917bc/dhh8l2c-fc7aa034-b8e7-4ddc-aa4f-58f854e7d916.jpg/v1/fill/w_1192,h_670,q_70,strp/cyberpunk_edgerunners___david_martinez_by_animehandler_dhh8l2c-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2JmMjJhOTBiLWJkOWItNGY5My1iYThlLWZjMjkxOTU5MTdiY1wvZGhoOGwyYy1mYzdhYTAzNC1iOGU3LTRkZGMtYWE0Zi01OGY4NTRlN2Q5MTYuanBnIiwiaGVpZ2h0IjoiPD0xMDgwIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uud2F0ZXJtYXJrIl0sIndtayI6eyJwYXRoIjoiXC93bVwvYmYyMmE5MGItYmQ5Yi00ZjkzLWJhOGUtZmMyOTE5NTkxN2JjXC9hbmltZWhhbmRsZXItNC5wbmciLCJvcGFjaXR5Ijo5NSwicHJvcG9ydGlvbnMiOjAuNDUsImdyYXZpdHkiOiJjZW50ZXIifX0.Jw1_VsPh2BpCSzjU0JawJDNyeo9NmxK3qn-Arqc7JOU`}
+                                      src={`https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bf22a90b-bd9b-4f93-ba8e-fc29195917bc/dhh8l2c-fc7aa034-b8e7-4ddc-aa4f-58f854e7d916.jpg`}
                                       alt={`Artwork ${i}`}
                                       className="rounded-md object-cover w-full h-full"
                                     />
@@ -630,4 +635,3 @@ export default function VerifyPage() {
     </div>
   )
 }
-
