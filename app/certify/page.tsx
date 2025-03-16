@@ -76,7 +76,6 @@ export default function CertifyPage() {
 
     setIsPublishing(false)
     // Redirect to success page or marketplace
-    router.push("/marketplace")
   }
 
   return (
@@ -258,7 +257,7 @@ export default function CertifyPage() {
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
                       <img
-                        src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2b5e12ef-6bbc-40d1-a639-4de2770149dd/dj9f7cg-0998995a-e520-46ed-811f-d288b350c220.jpg/v1/fill/w_1175,h_680,q_70,strp/midnight_sentinel_by_emilysmith1994_dj9f7cg-pre.jpg"
+                        src="https://i.imgur.com/WAo6Ucq.png"
                         alt="Verification Flowchart"
                         className="rounded-lg border shadow-sm"
                       />
