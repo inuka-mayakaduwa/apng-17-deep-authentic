@@ -313,8 +313,7 @@ export default function Home() {
                   <ChevronDown className="h-5 w-5 text-gray-500" />
                 </button>
                 <div className="mt-3 text-gray-600">
-                  Yes! Our verification system works for both physical and digital artwork, including paintings,
-                  sculptures, digital art, and NFTs.
+                  No, Our verification system works for digital artwork, only.
                 </div>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -323,7 +322,7 @@ export default function Home() {
                   <ChevronDown className="h-5 w-5 text-gray-500" />
                 </button>
                 <div className="mt-3 text-gray-600">
-                  Most artworks are verified within 48-72 hours. Once verified, your certificate is immediately
+                  Most artworks are instantly verified within dew seconds. Once verified, your certificate is immediately
                   available and your artwork can be listed on our marketplace.
                 </div>
               </div>
