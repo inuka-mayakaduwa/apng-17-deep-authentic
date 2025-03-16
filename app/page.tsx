@@ -61,10 +61,12 @@ export default function Home() {
                     <ShieldCheck className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline" className="border-[#044507] text-[#044507]">
-                  Browse Authentic Art
-                  <Palette className="ml-2 h-5 w-5" />
-                </Button>
+                <Link href="/verify">
+                  <Button size="lg" variant="outline" className="border-[#044507] text-[#044507]">
+                    Verify Authentic & Certified Art
+                    <Palette className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
